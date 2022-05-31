@@ -68,6 +68,9 @@ class Session {
         this.handleStartGame(action.gameId);
         break;
       }
+      case 'endGame': {
+        this.handleEndGame(action.gameId);
+      }
       default:
         break;
     }
@@ -96,6 +99,11 @@ class Session {
   private handleStartGame(gameId: string) {
     gameHelper.startGame(gameId);
     publishToChannel(prefixer.game(this.gameId), actionCreator.gameStarted());
+  }
+
+  private handleEndGame(gameId: string) {
+    gameHelper.deleteGame(gameId);
+    console.log(gameHelper.gameRoomMap);
   }
 }
 

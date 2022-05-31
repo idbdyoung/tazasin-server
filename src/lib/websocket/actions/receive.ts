@@ -23,4 +23,14 @@ type StartGameAction = {
   gameId: string;
 };
 
-export type ReceiveAction = CallAction | AnswerAction | CandidateAction | StartGameAction;
+type EndGameAction = {
+  type: 'endGame';
+  gameId: string;
+};
+
+export type ReceiveAction =
+  | CallAction
+  | AnswerAction
+  | CandidateAction
+  | StartGameAction
+  | EndGameAction;

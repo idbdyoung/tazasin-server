@@ -1,5 +1,3 @@
-// // import { GameInfo } from '../../../@types/express';
-
 import type { User } from '@prisma/client';
 import type { GameRoom } from '../../../@types/express';
 

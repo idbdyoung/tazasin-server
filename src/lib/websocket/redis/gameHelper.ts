@@ -48,7 +48,7 @@ class GameHelper {
     return gameId;
   }
 
-  private async deleteGame(gameId: string) {
+  async deleteGame(gameId: string) {
     const key = prefixer.game(gameId);
     await (await globalSubscriber).unsubscribe(key);
     this.gameRoomMap.delete(key);

@@ -16,6 +16,7 @@ model User {
   email          String?
   password       String
   salt           String
+  score          Int    @default(0)
   totalGame      Int    @default(0)
   winGame        Int    @default(0)
   level          Int    @default(1)
