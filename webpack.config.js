@@ -1,5 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
@@ -19,9 +20,7 @@ module.exports = {
         use: ['ts-loader'],
         exclude: [
           '/node_modules/',
-          this.mode == 'production'
-            ? '/application.dev.json'
-            : '/application.prod.json',
+          this.mode == 'production' ? '/application.dev.json' : '/application.prod.json',
         ],
       },
     ],
@@ -29,6 +28,7 @@ module.exports = {
   node: {
     __dirname: false,
   },
+  plugins: [new Dotenv()],
   externals: [nodeExternals()],
   devtool: 'source-map',
 };

@@ -1,11 +1,10 @@
 import cors, { CorsOptions } from 'cors';
-import endpoint from '../endpoint';
 
-const whiteList = [endpoint.CLIENT_URL!];
+const whiteList = [process.env.CLIENT_URL];
 
 const corsOptions: CorsOptions = {
   origin: (origin, cb) => {
-    console.log(endpoint.CLIENT_URL, origin);
+    console.log(process.env.CLIENT_URL, origin);
     if (whiteList.indexOf(origin!) !== -1) {
       cb(null, true);
     } else {
