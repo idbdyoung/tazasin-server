@@ -2,13 +2,13 @@ import { RequestHandler } from 'express';
 
 import validateToken from '../validation/validateToken';
 import client from '../client';
+import endpoint from '../../endpoint';
 
 const authenticate: RequestHandler = async (req, res, next) => {
-  console.log(req.cookies[process.env.TOKEN_NAME!]);
-  if (!req.cookies[process.env.TOKEN_NAME!]) return next();
+  if (!req.cookies[endpoint.TOKEN_NAME!]) return next();
 
   try {
-    const { name } = await validateToken(req.cookies[process.env.TOKEN_NAME!]);
+    const { name } = await validateToken(req.cookies[endpoint.TOKEN_NAME!]);
     const user = await client.user.findUnique({
       where: {
         name,

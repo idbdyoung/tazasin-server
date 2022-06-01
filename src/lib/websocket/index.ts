@@ -8,6 +8,7 @@ import checkUrlExist, { CheckedIncomingMessage } from '../middleware/checkUrlExi
 import validateToken from '../validation/validateToken';
 import client from '../client';
 import type { User } from '@prisma/client';
+import endpoint from '../../endpoint';
 
 interface SessionData {
   user: User;
@@ -42,7 +43,7 @@ export default function (server: Server) {
       try {
         if (!req.headers.cookie) throw new Error();
         const cookies = cookie.parse(req.headers.cookie);
-        const { name } = await validateToken(cookies[process.env.TOKEN_NAME!]);
+        const { name } = await validateToken(cookies[endpoint.TOKEN_NAME!]);
         const user = await client.user.findUnique({
           where: {
             name,
