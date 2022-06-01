@@ -1,12 +1,8 @@
 import cors, { CorsOptions } from 'cors';
 
-const whiteList = [process.env.CLIENT_URL!];
-
 const corsOptions: CorsOptions = {
   origin: (origin, cb) => {
-    console.log(whiteList[0], origin);
-    if (whiteList.indexOf(origin!) !== -1) {
-      console.log(whiteList[0]);
+    if ('http://13.125.253.92' === origin!) {
       cb(null, true);
     } else {
       cb(new Error('Not allowed origin!'));
