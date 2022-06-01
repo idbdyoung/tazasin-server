@@ -11,7 +11,7 @@ const corsOptions: CorsOptions = {
       cb(new Error('Not allowed origin!'));
     }
   },
-  credentials: true,
+  // credentials: true,
 };
 const Cors = cors(corsOptions);
 
