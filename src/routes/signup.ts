@@ -3,6 +3,7 @@ import CRYPTO from 'crypto';
 import JWT from 'jsonwebtoken';
 
 import client from '../lib/client';
+import endpoint from '../endpoint';
 
 interface SignupRequestBody {
   name: string;
@@ -49,7 +50,7 @@ router.post<{}, SignupResponseBody, SignupRequestBody>('/', async (req, res) => 
       password: hashedPassword,
     },
   });
-  const token = JWT.sign({ name: user.name }, process.env.TOKEN_SECRET!, { expiresIn: '30d' });
+  const token = JWT.sign({ name: user.name }, endpoint.TOKEN_SECRET!, { expiresIn: '30d' });
 
   return res.status(200).json({
     ok: true,
