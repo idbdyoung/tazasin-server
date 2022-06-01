@@ -4,5 +4,6 @@ declare namespace NodeJS {
     PORT: string;
     TOKEN_SECRET: string;
     TOKEN_NAME: string;
+    CLIENT_URL: string;
   }
 }
