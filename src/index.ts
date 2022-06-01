@@ -21,6 +21,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(Cors);
 
+console.log(process.env.PORT);
+
 app.use('/user', user);
 app.use('/enter', enter);
 app.use('/signup', signup);
