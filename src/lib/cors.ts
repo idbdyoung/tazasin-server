@@ -1,6 +1,6 @@
 import cors, { CorsOptions } from 'cors';
 
-const whiteList = ['http://localhost:3000'];
+const whiteList = [process.env.CLIENT_URL];
 
 const corsOptions: CorsOptions = {
   origin: (origin, cb) => {
