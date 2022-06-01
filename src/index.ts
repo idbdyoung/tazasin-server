@@ -28,5 +28,5 @@ app.use('/game', game);
 
 app.use(handleError);
 
-server.listen(endpoint.PORT!, () => console.log(`🚀running on port: ${process.env.PORT}`));
+server.listen(endpoint.PORT!, () => console.log(`🚀running on port: ${endpoint.PORT}`));
 WebSocket(server);
