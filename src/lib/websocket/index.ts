@@ -42,7 +42,7 @@ export default function (server: Server) {
       try {
         if (!req.headers.cookie) throw new Error();
         const cookies = cookie.parse(req.headers.cookie);
-        const { name } = await validateToken(cookies[process.env.TOKEN_NAME]);
+        const { name } = await validateToken(cookies[process.env.TOKEN_NAME!]);
         const user = await client.user.findUnique({
           where: {
             name,

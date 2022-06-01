@@ -5,10 +5,10 @@ import client from '../client';
 
 const authenticate: RequestHandler = async (req, res, next) => {
   console.log(process.env.TOKEN_NAME, req);
-  if (!req.cookies[process.env.TOKEN_NAME]) return next();
+  if (!req.cookies[process.env.TOKEN_NAME!]) return next();
 
   try {
-    const { name } = await validateToken(req.cookies[process.env.TOKEN_NAME]);
+    const { name } = await validateToken(req.cookies[process.env.TOKEN_NAME!]);
     const user = await client.user.findUnique({
       where: {
         name,

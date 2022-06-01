@@ -49,7 +49,7 @@ router.post<{}, SignupResponseBody, SignupRequestBody>('/', async (req, res) => 
       password: hashedPassword,
     },
   });
-  const token = JWT.sign({ name: user.name }, process.env.TOKEN_SECRET, { expiresIn: '30d' });
+  const token = JWT.sign({ name: user.name }, process.env.TOKEN_SECRET!, { expiresIn: '30d' });
 
   return res.status(200).json({
     ok: true,
