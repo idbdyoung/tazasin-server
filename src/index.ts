@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(Cors);
 
-console.log(process.env.PORT);
+console.log(process.env.CLIENT_URL);
 
 app.use('/user', user);
 app.use('/enter', enter);
