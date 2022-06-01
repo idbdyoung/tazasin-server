@@ -4,6 +4,7 @@ const whiteList = [process.env.CLIENT_URL];
 
 const corsOptions: CorsOptions = {
   origin: (origin, cb) => {
+    console.log(whiteList[0]);
     if (whiteList.indexOf(origin!) !== -1) {
       cb(null, true);
     } else {
