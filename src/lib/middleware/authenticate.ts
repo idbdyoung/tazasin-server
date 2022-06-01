@@ -8,6 +8,7 @@ const authenticate: RequestHandler = async (req, res, next) => {
 
   try {
     const { name } = await validateToken(req.cookies[process.env.TOKEN_NAME!]);
+    console.log(name);
     const user = await client.user.findUnique({
       where: {
         name,
