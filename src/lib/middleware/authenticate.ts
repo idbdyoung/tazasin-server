@@ -6,12 +6,11 @@ import client from '../client';
 
 const authenticate: RequestHandler = async (req, res, next) => {
   const token = parseBearerToken(req);
-  console.log(token);
 
-  if (!req.cookies[process.env.TOKEN_NAME!]) return next();
+  if (!token) return next();
 
   try {
-    const { name } = await validateToken(req.cookies[process.env.TOKEN_NAME!]);
+    const { name } = await validateToken(token);
     const user = await client.user.findUnique({
       where: {
         name,
