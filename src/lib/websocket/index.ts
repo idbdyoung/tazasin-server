@@ -1,7 +1,5 @@
 import { Server } from 'http';
 import WebSocket from 'ws';
-import cookie from 'cookie';
-import parseBearerToken from 'parse-bearer-token';
 
 import Session from './Session';
 import gameHelper from './redis/gameHelper';
@@ -41,10 +39,7 @@ export default function (server: Server) {
     'upgrade',
     checkUrlExist(async (req, socket, head) => {
       try {
-        console.log(req.token, req.gameId);
-        const token = parseBearerToken(req);
-        if (!token) return;
-        const { name } = await validateToken(token);
+        const { name } = await validateToken(req.token);
         const user = await client.user.findUnique({
           where: {
             name,
