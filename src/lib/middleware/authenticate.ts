@@ -5,11 +5,10 @@ import validateToken from '../validation/validateToken';
 import client from '../client';
 
 const authenticate: RequestHandler = async (req, res, next) => {
-  const token = parseBearerToken(req);
-
-  if (!token) return next();
-
   try {
+    const token = parseBearerToken(req);
+
+    if (!token) throw new Error();
     const { name } = await validateToken(token);
     const user = await client.user.findUnique({
       where: {
