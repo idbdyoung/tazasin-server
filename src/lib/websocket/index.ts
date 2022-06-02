@@ -41,9 +41,8 @@ export default function (server: Server) {
     'upgrade',
     checkUrlExist(async (req, socket, head) => {
       try {
-        console.log(req);
+        console.log(req.token, req.gameId);
         const token = parseBearerToken(req);
-        console.log(token, '@@@@');
         if (!token) return;
         const { name } = await validateToken(token);
         const user = await client.user.findUnique({

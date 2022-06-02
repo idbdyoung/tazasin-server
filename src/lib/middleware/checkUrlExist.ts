@@ -3,6 +3,7 @@ import internal from 'stream';
 
 export interface CheckedIncomingMessage extends IncomingMessage {
   gameId: string;
+  token: string;
 }
 
 interface NewSocketServerListener {
@@ -12,10 +13,13 @@ interface NewSocketServerListener {
 const checkUrlExist =
   (listener: NewSocketServerListener) =>
   (req: IncomingMessage, socket: internal.Duplex, head: Buffer) => {
-    console.log(req.url);
     const url = req.url?.substring(1);
     if (!url) return socket.destroy();
-    const newReq: CheckedIncomingMessage = Object.assign(req, { gameId: url });
+    const splitted = url.split('?token=');
+    const newReq: CheckedIncomingMessage = Object.assign(req, {
+      gameId: splitted[0],
+      token: splitted[1],
+    });
     listener(newReq, socket, head);
   };
 
