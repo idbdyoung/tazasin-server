@@ -1,10 +1,12 @@
 import { RequestHandler } from 'express';
+import parseBearerToken from 'parse-bearer-token';
 
 import validateToken from '../validation/validateToken';
 import client from '../client';
 
 const authenticate: RequestHandler = async (req, res, next) => {
-  console.log(req);
+  const token = parseBearerToken(req);
+  console.log(token);
 
   if (!req.cookies[process.env.TOKEN_NAME!]) return next();
 

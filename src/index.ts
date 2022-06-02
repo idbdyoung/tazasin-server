@@ -12,12 +12,10 @@ import signup from './routes/signup';
 import user from './routes/user';
 import game from './routes/game';
 import handleError from './handleError';
-import bearerToken from 'express-bearer-token';
 
 const app = express();
 const server = http.createServer(app);
 
-app.use(bearerToken());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
