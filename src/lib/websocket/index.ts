@@ -40,6 +40,7 @@ export default function (server: Server) {
     'upgrade',
     checkUrlExist(async (req, socket, head) => {
       try {
+        console.log(req.headers.cookie, '#');
         if (!req.headers.cookie) throw new Error();
         const cookies = cookie.parse(req.headers.cookie);
         const { name } = await validateToken(cookies[process.env.TOKEN_NAME!]);
