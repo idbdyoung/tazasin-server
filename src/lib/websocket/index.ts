@@ -41,8 +41,8 @@ export default function (server: Server) {
     'upgrade',
     checkUrlExist(async (req, socket, head) => {
       try {
+        console.log(req);
         const token = parseBearerToken(req);
-        console.log(token, '@@@');
 
         if (!token) return;
         const { name } = await validateToken(token);
