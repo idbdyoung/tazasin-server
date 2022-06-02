@@ -42,6 +42,7 @@ export default function (server: Server) {
     checkUrlExist(async (req, socket, head) => {
       try {
         const token = parseBearerToken(req);
+        console.log(token, '@@@');
 
         if (!token) return;
         const { name } = await validateToken(token);
