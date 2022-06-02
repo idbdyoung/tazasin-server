@@ -43,7 +43,7 @@ export default function (server: Server) {
       try {
         console.log(req);
         const token = parseBearerToken(req);
-
+        console.log(token, '@@@@');
         if (!token) return;
         const { name } = await validateToken(token);
         const user = await client.user.findUnique({
