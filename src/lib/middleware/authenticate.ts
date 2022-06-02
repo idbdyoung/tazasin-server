@@ -4,6 +4,7 @@ import validateToken from '../validation/validateToken';
 import client from '../client';
 
 const authenticate: RequestHandler = async (req, res, next) => {
+  console.log(req.headers);
   console.log(process.env.TOKEN_NAME, req.cookies);
   if (!req.cookies[process.env.TOKEN_NAME!]) return next();
 
