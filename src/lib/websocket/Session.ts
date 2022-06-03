@@ -103,7 +103,6 @@ class Session {
 
   private handleEndGame(gameId: string) {
     gameHelper.deleteGame(gameId);
-    console.log(gameHelper.gameRoomMap);
   }
 }
 

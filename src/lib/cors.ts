@@ -4,7 +4,6 @@ const whiteList = [process.env.CLIENT_URL, 'http://localhost:3000', 'https://idb
 
 const corsOptions: CorsOptions = {
   origin: (origin, cb) => {
-    console.log(origin, whiteList[0]);
     if (whiteList.indexOf(origin!) !== -1) {
       cb(null, true);
     } else {
