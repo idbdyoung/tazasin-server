@@ -11,6 +11,7 @@ type GameRoom = {
   gameState: 'ingame' | 'waiting' | 'destroy';
   roomName: string;
   isPrivate: boolean;
+  winCondition: number;
   hostId: number;
   colorStore: ColorMap;
   sessions: Session[];
@@ -19,6 +20,7 @@ type GameRoom = {
 type GameSetting = {
   roomName: string;
   isPrivate: boolean;
+  winCondition: number;
 };
 
 declare global {

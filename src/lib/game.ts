@@ -4,6 +4,7 @@ interface CreateGameRoomProps {
   gameId: string;
   roomName: string;
   isPrivate: boolean;
+  winCondition: number;
   hostId: number;
 }
 
@@ -11,12 +12,14 @@ export const createGameItem = ({
   gameId,
   roomName,
   isPrivate,
+  winCondition,
   hostId,
 }: CreateGameRoomProps): GameRoom => ({
   gameId,
   gameState: 'waiting',
   roomName,
   isPrivate,
+  winCondition,
   hostId,
   colorStore: {
     '#4F85ED': false,

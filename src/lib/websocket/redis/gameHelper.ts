@@ -20,7 +20,7 @@ class GameHelper {
   gameRoomMap = new Map<string, GameRoom>();
 
   async createGame(receivedData: ReceiveCreateGameRoomData): Promise<string | undefined> {
-    const { roomName, isPrivate, hostId } = receivedData;
+    const { roomName, isPrivate, winCondition, hostId } = receivedData;
     const gameId = createGameId();
     const key = prefixer.game(gameId);
 
@@ -41,6 +41,7 @@ class GameHelper {
       gameId,
       roomName,
       isPrivate,
+      winCondition,
       hostId,
     });
     this.gameRoomMap.set(key, createdGame);
