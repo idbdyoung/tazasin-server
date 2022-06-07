@@ -28,7 +28,7 @@ class Session {
   async enter() {
     const game = gameHelper.getGame(this.gameId);
 
-    if (!game) return this.socket.close();
+    if (!game) return this.socket.close(1008, '게임 존재하지 않음');
     this.leaveWorks
       .add(() => gameHelper.returnColor(this.gameId, this.color))
       .add(gameHelper.addSessionToGameMemory(this))
