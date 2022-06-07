@@ -20,8 +20,9 @@ interface GameListResponseBody {
 const router = express.Router();
 
 router.get<{}, GameListResponseBody>('/list', authenticate, async (req, res) => {
-  const gameRoomList = gameHelper.getAllGames();
-  // .filter(game => game.gameState === 'waiting' && !game.isPrivate);
+  const gameRoomList = gameHelper
+    .getAllGames()
+    .filter(game => game.gameState === 'waiting' && !game.isPrivate);
   res.status(200).json({ gameRoomList });
 });
 
